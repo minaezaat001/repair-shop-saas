@@ -395,7 +395,7 @@ export async function getTicketsAction(
       );
     }
 
-    const where = and(...filters);
+    const where = and(...filters.filter(f => f !== undefined));
 
     const [{ total }] = await db
       .select({ total: count() })
